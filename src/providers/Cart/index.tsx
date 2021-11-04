@@ -1,8 +1,7 @@
-import { createContext, useContext, ReactNode, useState } from "react";
+import { createContext, useContext, ReactNode } from "react";
 import api from "../../services/index";
 import { ProductsData } from "../Products/index";
 import jwt_decode from "jwt-decode";
-import { useProducts } from "../Products";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -28,11 +27,11 @@ export const CartContext = createContext<CartProviderData>(
 export const CartProvider = ({ children }: CartProviderProps) => {
   const token = localStorage.getItem("token") || "";
 
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  const [cart, setCart] = useState<ProductsData[]>([]);
+  // const [cart, setCart] = useState<ProductsData[]>([]);
 
-  const [cartId, setCartId] = useState<number>(0);
+  // const [cartId, setCartId] = useState<number>(0);
 
   const decoded = jwt_decode<DecodedData>(token);
   const userId = decoded.sub;
@@ -41,7 +40,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   // }
   const addToCart = (product: ProductsData) => {
-    console.log(products);
+    // console.log(products);
     // const clicked = products.filter((item) => item.id === id);
     // api
     //   .patch("/cart", cart, {
@@ -68,8 +67,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       )
       .then((res) => {
         console.log(res.data.id);
-        setCart(res.data.cartItems);
-        setCartId(res.data.id);
+        // setCart(res.data.cartItems);
+        // setCartId(res.data.id);
       })
       .catch((err) => console.log(err));
   };
