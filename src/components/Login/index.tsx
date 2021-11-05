@@ -8,17 +8,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { UserData } from "../../providers/Users/index";
 import { useCart } from "../../providers/Cart";
 import { useProducts } from "../../providers/Products";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const LoginComponent = () => {
-  useEffect(() => {
-    createCart();
+  // useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // }, []);
   const history = useHistory();
   const { login } = useUser();
   const { getProducts } = useProducts();
-  const { createCart } = useCart();
+  // const { createCart } = useCart();
   const userSchema = yup.object({
     email: yup.string().nullable().notRequired().email(),
     password: yup.string().nullable().notRequired(),

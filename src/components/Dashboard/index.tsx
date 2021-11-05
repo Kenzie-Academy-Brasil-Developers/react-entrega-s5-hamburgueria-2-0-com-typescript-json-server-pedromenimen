@@ -4,11 +4,25 @@ import { useProducts } from "../../providers/Products";
 import Card from "../Card/index";
 import style from "./styles";
 import { Typography } from "@material-ui/core";
+import jwt_decode from "jwt-decode";
+import { useUser } from "../../providers/Users";
+
+interface DecodedData {
+  email: string;
+  iat: number;
+  exp: number;
+  sub: string;
+}
 
 const ContentDashboard = () => {
+  const { token } = useUser();
+
   const { products, getProducts } = useProducts();
   useEffect(() => {
     getProducts();
+    const decoded = jwt_decode<DecodedData>(token);
+    localStorage.setItem("userId", (decoded.sub));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

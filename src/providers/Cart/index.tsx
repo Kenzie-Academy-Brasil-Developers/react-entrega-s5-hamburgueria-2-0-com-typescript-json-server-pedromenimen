@@ -7,16 +7,8 @@ interface CartProviderProps {
   children: ReactNode;
 }
 
-interface DecodedData {
-  email: string;
-  iat: number;
-  exp: number;
-  sub: string;
-}
-
 interface CartProviderData {
   addToCart: (productData: ProductsData) => void;
-  createCart: () => void;
   deleteFromCart: (productData: ProductsData) => void;
 }
 
@@ -25,27 +17,16 @@ export const CartContext = createContext<CartProviderData>(
 );
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const token = localStorage.getItem("token") || "";
 
-  // const [products, setProducts] = useState([]);
-
-  // const [cart, setCart] = useState<ProductsData[]>([]);
-
-  // const [cartId, setCartId] = useState<number>(0);
-
-  const decoded = jwt_decode<DecodedData>(token);
-  const userId = decoded.sub;
-
-  // if (cart.map(item => item.id).includes(product.id)) {
-
-  // }
   const addToCart = (product: ProductsData) => {
-    // console.log(products);
-    // const clicked = products.filter((item) => item.id === id);
+    const userId = Number(localStorage.getItem("userId"))
+    const newProduct = {...product, userId: userId}
+    console.log(userId)
+    console.log(newProduct)
     // api
-    //   .patch("/cart", cart, {
+    //   .post("/cart", product, {
     //     headers: {
-    //       Authorization: `Bearer ${token}`,
+    //       Authorization: `Bearer: ${localStorage.getItem("token")}`,
     //     },
     //   })
     //   .then((res) => {
@@ -54,28 +35,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     //   .catch((err) => console.log(err));
   };
 
-  const createCart = () => {
-    api
-      .post(
-        "/cart",
-        { userId: userId, cartItems: [] },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data.id);
-        // setCart(res.data.cartItems);
-        // setCartId(res.data.id);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const deleteFromCart = (productData: ProductsData) => {
     api
-      .post("/cart", productData)
+      .post("/cart", productData, {
+        headers: {
+          Authorization: `Bearer: ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
         console.log(res);
       })
@@ -83,7 +49,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, createCart, deleteFromCart }}>
+    <CartContext.Provider value={{ addToCart, deleteFromCart }}>
       {children}
     </CartContext.Provider>
   );

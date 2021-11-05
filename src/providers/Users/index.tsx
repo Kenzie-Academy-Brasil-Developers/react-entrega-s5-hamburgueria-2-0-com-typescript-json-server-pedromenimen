@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import api from "../../services/index";
@@ -36,7 +42,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     api
       .post("/login", userData)
       .then((res) => {
-        localStorage.setItem("token", res.data.accessToken);
+        localStorage.setItem("token", JSON.stringify(res.data.accessToken));
         setToken(res.data.accessToken);
 
         history.push("/dashboard");
