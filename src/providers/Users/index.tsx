@@ -3,7 +3,6 @@ import {
   useContext,
   useState,
   ReactNode,
-  useEffect,
 } from "react";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";

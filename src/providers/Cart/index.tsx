@@ -1,7 +1,6 @@
 import { createContext, useContext, ReactNode } from "react";
 import api from "../../services/index";
 import { ProductsData } from "../Products/index";
-import jwt_decode from "jwt-decode";
 
 interface CartProviderProps {
   children: ReactNode;
