@@ -1,20 +1,11 @@
-import { createTheme } from "@material-ui/core";
-
-export const theme = createTheme({
-  breakpoints: {
-    values: {
-      mobile: 0,
-      tablet: 400,
-      laptop: 550,
-      desktop: 768,
-    },
-  },
-});
-
 export const style = {
   border: { mobile: "black solid 1px", desktop: "none" },
   padding: "15px",
   borderRadius: "5px",
+  display: "flex",
+  flexDirection: "row-reverse",
+  alignItems: "center",
+  justifyContent: "space-evenly",
   "& .toRegister:hover": {
     cursor: "pointer",
     textDecoration: "underline",
@@ -26,6 +17,5 @@ export const style = {
       backgroundColor: "#27ae60",
       margin: "15px 0",
     },
-    "& input": {},
   },
 };

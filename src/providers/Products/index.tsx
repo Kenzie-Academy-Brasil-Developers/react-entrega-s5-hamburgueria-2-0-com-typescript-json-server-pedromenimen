@@ -12,6 +12,7 @@ export interface ProductsData {
   img: string;
   userId?: number;
   id?: number;
+  onCart?: boolean
 }
 
 interface ProductsProviderData {

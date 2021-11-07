@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserData } from "../../providers/Users/index";
 import { useProducts } from "../../providers/Products";
+import Slogan from "../Slogan";
 
 const LoginComponent = () => {
   const history = useHistory();
@@ -27,11 +28,8 @@ const LoginComponent = () => {
   };
   return (
     <Box sx={style}>
-      <Box className="">
-        <Box>
-          <Typography>BurguerKenzie</Typography>
-        </Box>
-        <Box>{/* Slogan */}</Box>
+      <Box>
+          <Slogan />
       </Box>
       <Box>
         <Typography>Login</Typography>

@@ -1,7 +1,12 @@
 import RegisterComponent from "../../components/Register";
 
 const Register = () => {
-  return <RegisterComponent />;
+  return (
+    <div
+    >
+      <RegisterComponent />
+    </div>
+  );
 };
 
 export default Register;

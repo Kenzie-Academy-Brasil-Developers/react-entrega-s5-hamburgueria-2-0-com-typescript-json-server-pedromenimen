@@ -7,6 +7,12 @@ export const Box = styled.div`
   padding: 5px;
   margin: 5px;
   width: 240px;
+  @media(max-width: 768px) {
+    width: 130px;
+    .image {
+      width: 100px
+    }
+  }
   button {
     background-color: ${(props) => props.color};
   }

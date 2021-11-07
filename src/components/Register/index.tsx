@@ -1,11 +1,12 @@
 import { Box, TextField, Button, Typography } from "@material-ui/core";
 import { useHistory } from "react-router";
-import style from "./styles";
+import { style } from "./styles";
 import { useUser } from "../../providers/Users";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserData } from "../../providers/Users/index";
+import Slogan from "../Slogan";
 
 const RegisterComponent = () => {
   const history = useHistory();
@@ -31,16 +32,14 @@ const RegisterComponent = () => {
   };
   return (
     <Box sx={style}>
-      <Box className="">
-        <Box>
-          <Typography>BurguerKenzie</Typography>
-        </Box>
-        <Box>{/* Slogan */}</Box>
+      <Box className="Slogan">
+        <Slogan />
       </Box>
-      <Box>
-        <Typography>Login</Typography>
+      <Box className="Oresto">
+        <Typography>Cadastro</Typography>
         <form onSubmit={handleSubmit(handleButton)}>
           <TextField
+            fullWidth
             margin="normal"
             variant="outlined"
             label="Nome"

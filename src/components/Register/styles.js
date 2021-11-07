@@ -1,9 +1,12 @@
-
-
-const style = {
+export const style = {
+  marginTop: { desktop: "5vw" },
   border: { mobile: "black solid 1px", desktop: "none" },
-  padding: "15px",
+  padding: { mobile: "15px", desktop: "15px 250px" },
   borderRadius: "5px",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
   "& .toLogin:hover": {
     cursor: "pointer",
     textDecoration: "underline",
@@ -16,6 +19,10 @@ const style = {
       margin: "15px 0",
     },
   },
+  "& .Slogan": {
+    flex: 1,
+  },
+  "& .Oresto": {
+    flex: 1,
+  },
 };
-
-export default style;
